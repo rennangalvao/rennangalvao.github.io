@@ -3,8 +3,8 @@
 # Roda todo dia pelo timer site-gtech (cortex) e pode ser chamado à mão depois de qualquer mudança.
 set -euo pipefail
 cd "$(dirname "$0")"
-npm test
 npm run build
+npm test   # depois do build: o teste de privacidade varre o dist/ e barra a publicação
 cd dist
 rm -rf .git
 git init -q -b gh-pages

@@ -26,3 +26,4 @@ pnpm-debug.log*
 .claude/skills/
 .specter-setup.log
 deploy.log
+.privado

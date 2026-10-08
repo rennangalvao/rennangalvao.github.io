@@ -97,10 +97,8 @@ import { waLink, CONTATO, EMPRESA } from '../src/data/site.mjs';
 test('link do WhatsApp codifica acentos e espaços', () => {
   assert.equal(waLink('Olá, G-TECH!'), 'https://wa.me/5563981212444?text=Ol%C3%A1%2C%20G-TECH!');
 });
-test('nenhum endereço residencial nos dados públicos', () => {
-  const tudo = JSON.stringify({ CONTATO, EMPRESA });
-  for (const proibido of ['***', '***', '***']) assert.ok(!tudo.includes(proibido), proibido);
-});
+// (revisão final) o teste de privacidade lê os termos proibidos do arquivo local .privado (fora do git)
+// e varre os dados e todo o dist/; ver tests/site.test.mjs.
 ```
 - [ ] **Step 2:** `npm test` → FAIL (módulos não existem).
 - [ ] **Step 3: Implementar** `src/lib/youtube.mjs`:
