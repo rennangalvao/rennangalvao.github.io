@@ -25,3 +25,4 @@ pnpm-debug.log*
 .superpowers/
 .claude/skills/
 .specter-setup.log
+deploy.log
