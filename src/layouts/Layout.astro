@@ -1,23 +1,62 @@
+---
+import "../styles/global.css";
+import { EMPRESA, CONTATO, CANAL } from "../data/site.mjs";
+
+interface Props {
+	title: string;
+	description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const og = new URL("/og.png", Astro.site).href;
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	name: EMPRESA.nome,
+	legalName: EMPRESA.razao,
+	url: Astro.site?.href,
+	logo: new URL("/logo.png", Astro.site).href,
+	image: og,
+	telephone: "+55-63-98121-2444",
+	email: CONTATO.email,
+	address: { "@type": "PostalAddress", addressLocality: "Palmas", addressRegion: "TO", addressCountry: "BR" },
+	areaServed: ["Palmas", "Tocantins", "Brasil"],
+	sameAs: [CANAL.url],
+};
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<meta name="theme-color" content="#0b1018" />
+		<link rel="icon" type="image/png" href="/logo.png" />
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="pt_BR" />
+		<meta property="og:site_name" content={EMPRESA.nome} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={og} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
+		/>
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
 	<body>
-		<slot />
+		<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+		<main id="conteudo">
+			<slot />
+		</main>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

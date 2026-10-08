@@ -1,0 +1,169 @@
+/* Cores da logo G-TECH: ciano (#06a0d2), verde-petróleo (#146d75) e cobre, adaptadas ao tema escuro. */
+:root {
+	--bg: #0b1018;
+	--sup: #111a26;
+	--sup2: #16212f;
+	--borda: #22324a;
+	--txt: #eef3f8;
+	--sec: #a8b4c5;
+	--ciano: #2bb3e8;
+	--agua: #34c3b7;
+	--petroleo: #146d75;
+	--cobre: #d08a5b;
+	--whats: #25d366;
+	--raio: 14px;
+	--mono: "JetBrains Mono", ui-monospace, monospace;
+	color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--txt);
+	font: 400 17px/1.65 Inter, system-ui, sans-serif;
+	overflow-x: hidden;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+a {
+	color: var(--ciano);
+}
+h1,
+h2,
+h3 {
+	line-height: 1.15;
+	margin: 0 0 0.5em;
+	letter-spacing: -0.02em;
+}
+h1 {
+	font-size: clamp(2.1rem, 6vw, 3.6rem);
+	font-weight: 800;
+}
+h2 {
+	font-size: clamp(1.6rem, 4vw, 2.3rem);
+	font-weight: 800;
+}
+h3 {
+	font-size: 1.15rem;
+	font-weight: 600;
+}
+p {
+	margin: 0 0 1em;
+}
+
+:focus-visible {
+	outline: 3px solid var(--agua);
+	outline-offset: 3px;
+	border-radius: 6px;
+}
+
+.pular {
+	position: absolute;
+	left: 16px;
+	top: -60px;
+	background: var(--txt);
+	color: var(--bg);
+	padding: 10px 14px;
+	border-radius: 8px;
+	z-index: 100;
+	font-weight: 600;
+}
+.pular:focus {
+	top: 12px;
+}
+
+.wrap {
+	max-width: 1120px;
+	margin: 0 auto;
+	padding-inline: 16px;
+}
+section {
+	padding-block: clamp(56px, 9vw, 104px);
+}
+.rotulo {
+	font: 500 0.82rem/1 var(--mono);
+	color: var(--agua);
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	margin-bottom: 14px;
+	display: block;
+}
+.lead {
+	color: var(--sec);
+	font-size: 1.1rem;
+	max-width: 60ch;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	min-height: 48px;
+	padding: 12px 22px;
+	border-radius: 999px;
+	font-weight: 600;
+	text-decoration: none;
+	border: 1px solid var(--borda);
+	color: var(--txt);
+	background: var(--sup);
+	transition: transform 0.15s, background 0.15s;
+}
+.btn:hover {
+	background: var(--sup2);
+	transform: translateY(-1px);
+}
+.btn-whats {
+	background: var(--whats);
+	color: #06210f;
+	border-color: transparent;
+}
+.btn-whats:hover {
+	background: #3ee07a;
+}
+.acoes {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 28px;
+}
+
+.grade {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 16px;
+	margin-top: 32px;
+}
+.cartao {
+	background: var(--sup);
+	border: 1px solid var(--borda);
+	border-radius: var(--raio);
+	padding: 24px;
+}
+.cartao p,
+.cartao li {
+	color: var(--sec);
+}
+.cartao ul {
+	margin: 0;
+	padding-left: 1.1em;
+}
+.alt {
+	background: linear-gradient(180deg, var(--sup) 0%, var(--bg) 100%);
+}
