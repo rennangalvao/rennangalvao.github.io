@@ -1,5 +1,5 @@
 export const EMPRESA = {
-  nome: "G-TECH System",
+  nome: "G-TECH SYSTEMS",
   razao: "G-TECH AUTOMACAO E SISTEMAS LTDA",
   cnpj: "68.816.887/0001-24",
   cidade: "Palmas/TO",
