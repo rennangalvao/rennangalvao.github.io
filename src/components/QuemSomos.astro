@@ -1,0 +1,44 @@
+---
+import { EMPRESA } from "../data/site.mjs";
+---
+
+<section aria-labelledby="t-quem">
+	<div class="wrap">
+		<span class="rotulo">Quem somos</span>
+		<h2 id="t-quem">Empresa de engenharia e software do Tocantins</h2>
+		<p class="lead">
+			A G-TECH System une instrumentação, automação e programação para resolver problemas reais de quem opera equipamentos, de uma subestação a uma residência.
+		</p>
+		<dl class="dados">
+			<div><dt>Razão social</dt><dd>{EMPRESA.razao}</dd></div>
+			<div><dt>CNPJ</dt><dd>{EMPRESA.cnpj}</dd></div>
+			<div><dt>Sede</dt><dd>{EMPRESA.cidade}</dd></div>
+			<div><dt>Atendimento</dt><dd>{EMPRESA.atendimento}</dd></div>
+		</dl>
+	</div>
+</section>
+
+<style>
+	.dados {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 16px;
+		margin: 28px 0 0;
+	}
+	.dados div {
+		background: var(--sup);
+		border: 1px solid var(--borda);
+		border-radius: var(--raio);
+		padding: 18px 20px;
+	}
+	dt {
+		font: 500 0.8rem var(--mono);
+		color: var(--agua);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+	dd {
+		margin: 6px 0 0;
+		overflow-wrap: anywhere;
+	}
+</style>

@@ -1,7 +1,29 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Ambientes from "../components/Ambientes.astro";
+import Servicos from "../components/Servicos.astro";
+import Projetos from "../components/Projetos.astro";
+import Canal from "../components/Canal.astro";
+import QuemSomos from "../components/QuemSomos.astro";
+import Contato from "../components/Contato.astro";
+import WhatsFlutuante from "../components/WhatsFlutuante.astro";
+import { CANAL } from "../data/site.mjs";
+import { buscarVideos } from "../lib/youtube.mjs";
+
+const videos = await buscarVideos(CANAL.channelId, 6);
 ---
 
-<Layout title="G-TECH System" description="G-TECH System">
-	<h1>G-TECH System</h1>
+<Layout
+	title="G-TECH System · Software e automação em Palmas/TO"
+	description="Instrumentação, automação industrial, software sob encomenda, robôs com IA e sites. Palmas/TO e todo o Brasil. Peça seu orçamento pelo WhatsApp."
+>
+	<Hero />
+	<Ambientes />
+	<Servicos />
+	<Projetos />
+	<Canal videos={videos} />
+	<QuemSomos />
+	<Contato />
+	<WhatsFlutuante />
 </Layout>

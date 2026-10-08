@@ -1,0 +1,31 @@
+---
+import { AMBIENTES } from "../data/site.mjs";
+---
+
+<section aria-labelledby="t-ambientes">
+	<div class="wrap">
+		<span class="rotulo">Onde atuamos</span>
+		<h2 id="t-ambientes">Da indústria à sua casa</h2>
+		<p class="lead">O mesmo cuidado de engenharia em qualquer lugar onde exista um equipamento para controlar.</p>
+		<div class="grade">
+			{
+				AMBIENTES.map((a, i) => (
+					<article class="cartao">
+						<span class="num">{String(i + 1).padStart(2, "0")}</span>
+						<h3>{a.titulo}</h3>
+						<ul>{a.itens.map((item) => <li>{item}</li>)}</ul>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.num {
+		font: 500 0.85rem var(--mono);
+		color: var(--cobre);
+		display: block;
+		margin-bottom: 10px;
+	}
+</style>

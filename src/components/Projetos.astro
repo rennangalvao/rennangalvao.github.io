@@ -1,0 +1,26 @@
+---
+import { PROJETOS } from "../data/site.mjs";
+---
+
+<section aria-labelledby="t-projetos">
+	<div class="wrap">
+		<span class="rotulo">Projetos realizados</span>
+		<h2 id="t-projetos">Automação que já está funcionando</h2>
+		<div class="grade">
+			{
+				PROJETOS.map((p) => (
+					<article class="cartao projeto">
+						<h3>{p.titulo}</h3>
+						<p>{p.texto}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.projeto {
+		border-left: 3px solid var(--agua);
+	}
+</style>

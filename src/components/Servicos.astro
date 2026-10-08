@@ -1,0 +1,20 @@
+---
+import { SERVICOS } from "../data/site.mjs";
+---
+
+<section id="servicos" class="alt" aria-labelledby="t-servicos">
+	<div class="wrap">
+		<span class="rotulo">Serviços</span>
+		<h2 id="t-servicos">O que a G-TECH faz por você</h2>
+		<div class="grade">
+			{
+				SERVICOS.map((s) => (
+					<article class="cartao">
+						<h3>{s.titulo}</h3>
+						<p>{s.texto}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

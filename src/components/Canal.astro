@@ -1,0 +1,72 @@
+---
+import { CANAL } from "../data/site.mjs";
+
+interface Props {
+	videos: { id: string; titulo: string; url: string; thumb: string }[];
+}
+const { videos } = Astro.props;
+---
+
+<section id="canal" class="alt" aria-labelledby="t-canal">
+	<div class="wrap">
+		<span class="rotulo">Canal no YouTube</span>
+		<h2 id="t-canal">{CANAL.nome}: uma curiosidade de tecnologia por dia</h2>
+		<p class="lead">Vídeos curtos sobre tecnologia e inteligência artificial, produzidos e publicados todos os dias pela automação da G-TECH.</p>
+		{
+			videos.length > 0 && (
+				<div class="videos">
+					{videos.map((v) => (
+						<a class="video" href={v.url} target="_blank" rel="noopener">
+							<img src={v.thumb} alt="" loading="lazy" width="480" height="360" />
+							<span>{v.titulo}</span>
+						</a>
+					))}
+				</div>
+			)
+		}
+		<div class="acoes">
+			<a class="btn btn-yt" href={CANAL.inscrever} target="_blank" rel="noopener">Inscrever-se no canal</a>
+			<a class="btn" href={CANAL.url} target="_blank" rel="noopener">Ver o canal</a>
+		</div>
+	</div>
+</section>
+
+<style>
+	.videos {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+		gap: 16px;
+		margin-top: 28px;
+	}
+	.video {
+		display: block;
+		background: var(--sup);
+		border: 1px solid var(--borda);
+		border-radius: var(--raio);
+		overflow: hidden;
+		color: var(--txt);
+		text-decoration: none;
+	}
+	.video img {
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		width: 100%;
+	}
+	.video span {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		padding: 12px 14px 14px;
+		font-weight: 600;
+		font-size: 0.95rem;
+	}
+	.btn-yt {
+		background: #ff0033;
+		border-color: transparent;
+		color: #fff;
+	}
+	.btn-yt:hover {
+		background: #e0002d;
+	}
+</style>
