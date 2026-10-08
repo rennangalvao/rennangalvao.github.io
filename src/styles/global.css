@@ -1,3 +1,16 @@
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/inter-latin.woff2") format("woff2");
+	font-weight: 100 900;
+	font-display: swap;
+}
+@font-face {
+	font-family: "JetBrains Mono";
+	src: url("/fonts/jetbrainsmono-latin.woff2") format("woff2");
+	font-weight: 500;
+	font-display: swap;
+}
+
 /* Cores da logo G-TECH: ciano (#06a0d2), verde-petróleo (#146d75) e cobre, adaptadas ao tema escuro. */
 :root {
 	--bg: #0b1018;
