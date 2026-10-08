@@ -1,0 +1,49 @@
+# Regras do projeto (Specter)
+
+Você é o executor de volume. Tarefas que já têm a resposta definida e só faltam
+ser digitadas. Se falta *decidir* algo (arquitetura, stack, segurança, causa de
+bug desconhecida), pare e diga que a tarefa é do Claude — não decida por conta.
+
+## 1. Consulte o conhecimento ANTES de codar (obrigatório)
+
+Antes de escrever qualquer código, descubra as regras que valem para esta tarefa:
+
+```bash
+node /storage/projects/developer/Specter/knowledge/retrieve.mjs <tags>
+```
+
+Escolha 2 a 5 tags que descrevam a tarefa (ex.: `api auth`, `frontend responsivo`,
+`webhook idempotencia`, `seo astro`). O comando devolve as fichas relevantes no
+stdout e, no stderr, as fontes e a **checklist**.
+
+Regras das fichas têm precedência sobre seu palpite. Não reinvente o que já existe
+como ficha.
+
+## 2. A checklist é o critério de pronto
+
+O `retrieve.mjs` imprime uma checklist no stderr (ex.: `auth_antes_de_processar`,
+`schema_estrito`, `sem_pii_em_erro_ou_log`). Antes de dizer que terminou, percorra
+item por item e diga como cada um foi atendido. Item não atendido = não terminou.
+
+## 3. Código mínimo — pare no primeiro degrau que resolve
+
+1. Isso precisa existir? Se não foi pedido, não faça.
+2. Já existe no codebase? Reuse ou estenda.
+3. A biblioteca padrão resolve?
+4. Recurso nativo do framework resolve?
+5. Dependência já instalada resolve?
+6. Dá em poucas linhas?
+7. Entregue o mínimo que funciona.
+
+## 4. Nunca cortar
+
+- Validação de entrada, tratamento de erro e segurança **não** são cortados por brevidade.
+- Responsivo e acessível por padrão (mobile-first).
+- Segredos só em `.env` — nunca no código, nunca em arquivo versionado.
+- Código novo deve parecer o código ao redor: mesmo estilo, mesmos nomes, mesmo idioma.
+- Cortou um atalho de propósito? Diga explicitamente o que ficou de fora.
+
+## 5. Ao terminar
+
+Se surgiu uma regra ou padrão reutilizável que ainda não é ficha, diga qual —
+ela deve virar ficha nova em `Specter/knowledge/` (não fica só no chat).
