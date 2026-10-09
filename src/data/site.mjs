@@ -34,11 +34,11 @@ export const PROJETOS = [
   { titulo: "Agenda online de barbearia", texto: "O cliente marca o horário pelo site e o pedido chega na hora no WhatsApp do barbeiro." },
   { titulo: "Delivery atendido por IA", texto: "Robô no WhatsApp que mostra o cardápio, responde dúvidas e calcula a taxa de entrega pela localização." },
   { titulo: "Pagamentos via PIX automatizados", texto: "Sistema que recebe, confere e registra cada pagamento sem trabalho manual." },
-  { titulo: "Canal de vídeos que se produz sozinho", texto: "Roteiro, narração, edição e publicação diária feitos por IA. É o Tech Curioso, logo abaixo." },
+  { titulo: "Canal de vídeos que se produz sozinho", texto: "Roteiro, narração, edição e publicação diária feitos por IA. É o G-Tech Curioso, logo abaixo." },
 ];
 
 export const CANAL = {
-  nome: "Tech Curioso",
+  nome: "G-Tech Curioso",
   url: "https://www.youtube.com/@gtechcurioso",
   inscrever: "https://www.youtube.com/@gtechcurioso?sub_confirmation=1",
   channelId: "UC9NiI-ewQ-U4XrKaqHIH26Q",
