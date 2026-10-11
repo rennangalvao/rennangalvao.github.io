@@ -30,7 +30,10 @@ export async function buscarVideos(channelId, limite = 6, fetchFn = fetch, cache
   } catch {}
   try {
     if (videos.length) writeFileSync(cache, JSON.stringify(videos));
-    else videos = JSON.parse(readFileSync(cache, "utf8")).slice(0, limite);
+    else {
+      videos = JSON.parse(readFileSync(cache, "utf8")).slice(0, limite);
+      console.warn(`youtube: feed sem vídeos, usei os ${videos.length} da última lista boa`);
+    }
   } catch {}
   return Array.isArray(videos) ? videos : [];
 }
