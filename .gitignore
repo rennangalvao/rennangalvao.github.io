@@ -30,3 +30,4 @@ deploy.log
 .claude/
 CLAUDE.md
 *.log.*
+.videos-cache.json

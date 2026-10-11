@@ -1,4 +1,7 @@
-// Lê o feed RSS público do canal no build. Nunca lança: sem feed, o site sai sem a lista de vídeos.
+// Lê o feed RSS público do canal no build. Nunca lança: sem feed, usa a última lista boa (o feed do
+// YouTube às vezes dá 404 por horas) e, sem ela, o site sai sem a lista de vídeos.
+import { readFileSync, writeFileSync } from "node:fs";
+
 const ENT = { "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&#39;": "'", "&apos;": "'" };
 const decod = (s) => s.replace(/&(amp|lt|gt|quot|apos|#39);/g, (m) => ENT[m]);
 
@@ -19,11 +22,15 @@ export function parseFeed(xml, limite = 6) {
   return out;
 }
 
-export async function buscarVideos(channelId, limite = 6, fetchFn = fetch) {
+export async function buscarVideos(channelId, limite = 6, fetchFn = fetch, cache = ".videos-cache.json") {
+  let videos = [];
   try {
     const r = await fetchFn(`https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`);
-    return r.ok ? parseFeed(await r.text(), limite) : [];
-  } catch {
-    return [];
-  }
+    if (r.ok) videos = parseFeed(await r.text(), limite);
+  } catch {}
+  try {
+    if (videos.length) writeFileSync(cache, JSON.stringify(videos));
+    else videos = JSON.parse(readFileSync(cache, "utf8")).slice(0, limite);
+  } catch {}
+  return Array.isArray(videos) ? videos : [];
 }
