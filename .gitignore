@@ -27,3 +27,5 @@ pnpm-debug.log*
 .specter-setup.log
 deploy.log
 .privado
+.claude/
+CLAUDE.md
