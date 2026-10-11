@@ -3,6 +3,10 @@
 # Roda todo dia pelo timer site-gtech (cortex) e pode ser chamado à mão depois de qualquer mudança.
 set -euo pipefail
 cd "$(dirname "$0")"
+# o log ninguém lê: falha no build, no teste ou no push vai pro Telegram (robô do canal-ia)
+trap 'python3 -c "import sys; sys.path.insert(0, \"/storage/projects/developer/canal-ia/monitor\"); import relatorio; relatorio.enviar(sys.argv[1])" \
+  "⚠️ Site: o deploy falhou na linha $LINENO: $BASH_COMMAND
+Detalhes em gtech-site/deploy.log" || echo "aviso no Telegram não enviado"' ERR
 npm run build
 npm test   # depois do build: o teste de privacidade varre o dist/ e barra a publicação
 cd dist
