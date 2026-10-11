@@ -1,5 +1,5 @@
 ---
-import { CONTATO, EMPRESA } from "../data/site.mjs";
+import { CONTATO } from "../data/site.mjs";
 ---
 
 <section id="contato" class="alt" aria-labelledby="t-contato">
@@ -13,40 +13,3 @@ import { CONTATO, EMPRESA } from "../data/site.mjs";
 		</div>
 	</div>
 </section>
-
-<footer class="rodape">
-	<div class="wrap rodape-grade">
-		<span>© 2026 {EMPRESA.nome} · CNPJ {EMPRESA.cnpj}</span>
-		<nav aria-label="Políticas">
-			<a href="/gtech-system/privacidade.html">Privacidade</a>
-			<a href="/gtech-system/termos.html">Termos</a>
-		</nav>
-	</div>
-</footer>
-
-<style>
-	.rodape {
-		border-top: 1px solid var(--borda);
-		padding: 28px 0;
-		color: var(--sec);
-		font-size: 0.9rem;
-	}
-	.rodape-grade {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 12px 24px;
-		justify-content: space-between;
-	}
-	.rodape nav {
-		display: flex;
-		gap: 18px;
-	}
-	.rodape a {
-		color: var(--sec);
-	}
-	@media (max-width: 767px) {
-		.rodape {
-			padding-bottom: 96px;
-		}
-	}
-</style>

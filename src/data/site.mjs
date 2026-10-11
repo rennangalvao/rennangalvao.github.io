@@ -6,11 +6,12 @@ export const EMPRESA = {
   atendimento: "Presencial em Palmas e no Tocantins · remoto em todo o Brasil",
 };
 
-const FONE = "5563981212444";
+const FONE = "5563981212444"; // única fonte do número: o resto deriva daqui
 export const waLink = (msg) => `https://wa.me/${FONE}?text=${encodeURIComponent(msg)}`;
 
 export const CONTATO = {
-  whatsapp: "(63) 98121-2444",
+  whatsapp: `(${FONE.slice(2, 4)}) ${FONE.slice(4, 9)}-${FONE.slice(9)}`,
+  telefone: `+${FONE.slice(0, 2)}-${FONE.slice(2, 4)}-${FONE.slice(4, 9)}-${FONE.slice(9)}`,
   whatsappLink: waLink("Olá, G-TECH! Vim pelo site e quero um orçamento."),
   email: "gtech.instrumentacao@gmail.com",
   emailLink: "mailto:gtech.instrumentacao@gmail.com?subject=" + encodeURIComponent("Orçamento pelo site"),

@@ -8,6 +8,11 @@ test("link do WhatsApp codifica acentos e espaços", () => {
   assert.equal(waLink("Olá, G-TECH!"), "https://wa.me/5563981212444?text=Ol%C3%A1%2C%20G-TECH!");
 });
 
+test("telefone de exibição e do JSON-LD saem do mesmo número", () => {
+  assert.equal(CONTATO.whatsapp, "(63) 98121-2444");
+  assert.equal(CONTATO.telefone, "+55-63-98121-2444");
+});
+
 // Dados que nunca podem ir a público (ex.: endereço residencial do CNPJ). A lista fica em .privado,
 // um termo por linha, fora do git — o repositório é público e não pode conter os próprios termos.
 const PRIVADO = new URL("../.privado", import.meta.url);

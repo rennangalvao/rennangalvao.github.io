@@ -17,7 +17,7 @@ const jsonLd = {
 	url: Astro.site?.href,
 	logo: new URL("/logo.png", Astro.site).href,
 	image: og,
-	telephone: "+55-63-98121-2444",
+	telephone: CONTATO.telefone,
 	email: CONTATO.email,
 	address: { "@type": "PostalAddress", addressLocality: "Palmas", addressRegion: "TO", addressCountry: "BR" },
 	areaServed: ["Palmas", "Tocantins", "Brasil"],
@@ -50,8 +50,45 @@ const jsonLd = {
 	</head>
 	<body>
 		<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+		<slot name="topo" />
 		<main id="conteudo">
 			<slot />
 		</main>
+		<footer class="rodape">
+			<div class="wrap rodape-grade">
+				<span>© 2026 {EMPRESA.nome} · CNPJ {EMPRESA.cnpj}</span>
+				<nav aria-label="Políticas">
+					<a href="/gtech-system/privacidade.html">Privacidade</a>
+					<a href="/gtech-system/termos.html">Termos</a>
+				</nav>
+			</div>
+		</footer>
 	</body>
 </html>
+
+<style>
+	.rodape {
+		border-top: 1px solid var(--borda);
+		padding: 28px 0;
+		color: var(--sec);
+		font-size: 0.9rem;
+	}
+	.rodape-grade {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px 24px;
+		justify-content: space-between;
+	}
+	.rodape nav {
+		display: flex;
+		gap: 18px;
+	}
+	.rodape a {
+		color: var(--sec);
+	}
+	@media (max-width: 767px) {
+		.rodape {
+			padding-bottom: 96px;
+		}
+	}
+</style>

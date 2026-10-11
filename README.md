@@ -1,46 +1,35 @@
-# Astro Starter Kit: Basics
+# Site G-TECH SYSTEMS
+
+Site institucional da G-TECH SYSTEMS (software e automação, Palmas/TO): uma página em Astro, sem
+JavaScript no cliente, publicada no GitHub Pages em https://rennangalvao.github.io/.
+
+## Montar e testar
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev     # servidor local
+npm run build   # gera o dist/
+npm test        # roda depois do build: o teste de privacidade varre o dist/
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Os textos, o contato e a lista de serviços ficam em `src/data/site.mjs`. O número de telefone
+existe uma vez só (`FONE`); o link do WhatsApp, o número exibido e o do JSON-LD saem dele.
 
-## 🚀 Project Structure
+## Vídeos do canal e `.videos-cache.json`
 
-Inside of your Astro project, you'll see the following folders and files:
+No build, `src/lib/youtube.mjs` lê o feed RSS público do canal e mostra os 6 vídeos mais recentes.
+Cada leitura boa é gravada em `.videos-cache.json` (fora do git). Se o feed falhar ou vier vazio (o
+YouTube às vezes devolve 404 por horas), o build usa essa última lista e avisa no log; sem cache, o
+site sai sem a seção de vídeos, mas o build não quebra.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Dados privados
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+`.privado` (fora do git) lista termos que nunca podem ir a público, um por linha. O `npm test`
+falha se algum deles aparecer nos dados ou no `dist/`, e isso barra a publicação.
 
-## 🧞 Commands
+## Publicação
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+`deploy.sh` monta, testa e envia o `dist/` para a branch `gh-pages`. No cortex, o timer systemd
+`site-gtech` roda o script todo dia às 11:15 do relógio do cortex (America/Chicago, 13:15 em
+Brasília), depois do Short das 12h, para puxar os vídeos novos. O log fica em `deploy.log`. Para
+publicar na hora: `./deploy.sh`.
