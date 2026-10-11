@@ -29,3 +29,4 @@ deploy.log
 .privado
 .claude/
 CLAUDE.md
+*.log.*
